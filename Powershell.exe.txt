@@ -1,0 +1,24 @@
+@echo off
+set space=%random%
+title Windows Powershell
+echo Windows Powershell
+echo Copyright ^(C^) Microsoft Corporation. All rights reserved.
+echo.
+echo 新しいクロスプラットフォームの PowerShell をお試しください https://aka.ms/pscore6
+echo.
+goto loop
+
+:loop
+set command=%space%
+set /p command="PS C:\Windows\system32> "
+if "%command%" == "%space%" (goto loop)
+if "%command%" == "exit" (exit)
+echo %command% : 用語 '%command%' は、コマンドレット、関数、スクリプト ファイル、または操作可能なプログラムの名前として認識されません。
+echo 名前が正しく記述されていることを確認し、パスが含まれている場合はそのパスが正しいことを確認してから、再試行してください。
+echo 発生場所 行:1 文字:1
+echo + %command%
+echo + ~
+echo     + CategoryInfo          : ObjectNotFound: (a:String) [], CommandNotFoundException
+echo    + FullyQualifiedErrorId : CommandNotFoundException
+echo.
+goto loop
